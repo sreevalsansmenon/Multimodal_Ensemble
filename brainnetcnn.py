@@ -33,7 +33,7 @@ tf.get_logger().setLevel('ERROR')
 data_dict = loadmat('smith_connectivity.mat')
 X= np.reshape(np.array(data_dict['X']),(1100,70,70,1))
 X[X == inf] = 0
-y = pd.get_dummies(np.concatenate((np.zeros(549+1),np.ones(546+4))))
+y = pd.get_dummies(np.concatenate((np.zeros(550),np.ones(550))))
 
 def create_model():
     momentum = 0.9
