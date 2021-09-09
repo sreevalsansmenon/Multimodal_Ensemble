@@ -62,7 +62,7 @@ i=0
 cvscores = []
 prediction = []
 actual_out=[]
-for train, test in kfold.split(X,np.concatenate((np.zeros(549+1),np.ones(546+4)))):
+for train, test in kfold.split(X,np.concatenate((np.zeros(550),np.ones(550)))):
     # checkpoint
     # i+=1
     # filepath="weights-" + str(i) + ".hdf5"
