@@ -34,6 +34,7 @@ accu = 0;
 iteration = 0;
 start = tic;
 % Loop over epochs.
+patience_ini = 0;
 for epoch = 1:numEpochs
     % Shuffle data.
     idx = randperm(numel(YTrain));
