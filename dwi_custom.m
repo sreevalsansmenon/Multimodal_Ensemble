@@ -34,6 +34,7 @@ accu = 0;
 iteration = 0;
 start = tic;
 % Loop over epochs.
+patience_ini = 0;
 for epoch = 1:numEpochs
     % Shuffle data.
     idx = randperm(numel(YTrain));
@@ -72,15 +73,19 @@ for epoch = 1:numEpochs
         addpoints(lineLossTrain,iteration,double(gather(extractdata(loss))))
         title("Epoch: " + epoch + ", Elapsed: " + string(D))
         drawnow
-        if epoch>5
             dlYPred = predict(dlnet1,dlXTest);
             [~,idx] = max(extractdata(dlYPred),[],1);
             YPred = classes(idx);
             accuracy = sum(categorical(str2double(YPred))==YTest')/size(dlXTest,5);
             if accuracy >= accu
                 save(['dwi_' num2str(crossfold) '_test.mat'],'dlnet1','YPred','YTest')
+                accuracy == accu
+                patience_ini = patience_ini + (accu = accuracy);
             end
-        end
+            if patience_ini>19
+                epoch = numEpochs;
+                break;
+            end
     end
 end
 
