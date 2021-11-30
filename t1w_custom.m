@@ -87,6 +87,12 @@ for epoch = 1:numEpochs
                 break;
             end
     end
+    if patience_ini>19
+        epoch
+        disp('exit')
+        epoch = numEpochs;
+        break;
+    end
 end
 
 
