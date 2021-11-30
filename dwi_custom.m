@@ -79,8 +79,8 @@ for epoch = 1:numEpochs
             accuracy = sum(categorical(str2double(YPred))==YTest')/size(dlXTest,5);
             if accuracy >= accu
                 save(['dwi_' num2str(crossfold) '_test.mat'],'dlnet1','YPred','YTest')
-                accuracy == accu
                 patience_ini = patience_ini + (accu = accuracy);
+                accu = accuracy;
             end
             if patience_ini>19
                 epoch = numEpochs;
