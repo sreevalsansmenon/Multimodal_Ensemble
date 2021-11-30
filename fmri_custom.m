@@ -78,7 +78,7 @@ for epoch = 1:numEpochs
             YPred = classes(idx);
             accuracy = sum(categorical(str2double(YPred))==YTest')/size(dlXTest,5);
             if accuracy >= accu
-                save(['dwi_' num2str(crossfold) '_test.mat'],'dlnet1','YPred','YTest')
+                save(['fmri_' num2str(crossfold) '_test.mat'],'dlnet1','YPred','YTest')
                 accuracy == accu
                 patience_ini = patience_ini + (accu = accuracy);
             end
